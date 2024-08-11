@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1723038981 source:c:\users\nico\desktop\2do semestre lcc\programacion procedural\ejercicios\practica unidad 2\ejercicio-5-unidad2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
