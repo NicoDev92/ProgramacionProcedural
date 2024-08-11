@@ -135,7 +135,7 @@ void realizarCompra(Producto productos[CANT_PROD], Proveedor proveedores[CANT_PR
             proveedores[indiceProveedor].cantidadCompras += 1;
         }
     }
-
+    return;
 }
 
 //Mostrar dinero invertido en cada producto:
@@ -177,6 +177,33 @@ void ordenarProveedoresAlfabeticamenteYMostrarlos(Proveedor proveedoresFiltrados
                proveedoresFiltrados[k].nombre, proveedoresFiltrados[k].nroProveedor, proveedoresFiltrados[k].cantidadCompras);
         printf("============");
     }
+    return;
+}
+
+// Mostrar la informacion de un proveedor ingresado por teclado:
+void mostrarInfoProveedor(Proveedor proveedoresFiltrados[CANT_PROVEEDORES], int cantProveedoresFiltrados){
+    char nombreProveedor[20];
+    int indice = 0;
+    int bandera = 0;
+
+    printf("Ingrese el nombre del proveedor: \n");
+    gets(nombreProveedor);
+    getchar();
+
+    while(indice < cantProveedoresFiltrados &&  !bandera){
+        if(strcmp(proveedoresFiltrados[indice].nombre, nombreProveedor) == 0){
+            bandera = 1;
+            printf(">>Nombre proveedor: %s \n>>Cod. Proveedor: %i \n>>Cant. Compras: %i\n",
+                   proveedoresFiltrados[indice].nombre, proveedoresFiltrados[indice].nroProveedor, proveedoresFiltrados[indice].cantidadCompras);
+        } else {
+            indice++;
+        }
+    }
+
+    if(indice == cantProveedoresFiltrados && bandera){
+        printf("No se encontro el proveedor con nombre: %s\n", nombreProveedor);
+    }
+    return;
 }
 
 
@@ -193,6 +220,7 @@ int main()
     dineroInvertido(productos);
     cantProveedoresMas10Compras = filtrarProveedoresMasDe10Compras(proveedores, proveedoresFiltrados);
     ordenarProveedoresAlfabeticamenteYMostrarlos(proveedoresFiltrados, cantProveedoresMas10Compras);
+    mostrarInfoProveedor(proveedoresFiltrados, cantProveedoresMas10Compras);
 
 
     printf("Hello world!\n");
