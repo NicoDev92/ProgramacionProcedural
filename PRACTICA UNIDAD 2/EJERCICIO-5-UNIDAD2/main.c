@@ -125,16 +125,18 @@ void realizarVenta(char nombreProducto[20], int cantidad, Producto productos[CAN
 
     while (!encontrado && indice < CANT_PRODUCTOS)
     {
-        if (strcmp(nombreProducto, productos[indice].nombre) == 0)
+        if (strcmp(toupper(nombreProducto), toupper(productos[indice].nombre)) == 0)
         {
             productos[indice].cantVendida += cantidad;
             productos[indice].stock -= cantidad;
             printf("\tTransaccion realizada con exito!\n");
             encontrado = 1;
+        } else {
+            indice++;
         }
-        indice++;
     }
 }
+
 
 // Funcion para ingresar ventas
 void procesarVenta(Producto productos[CANT_PRODUCTOS])

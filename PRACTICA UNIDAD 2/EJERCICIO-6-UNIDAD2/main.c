@@ -150,9 +150,11 @@ void dineroInvertido(Producto productos[CANT_PROD]){
 // Filtrar proveedores con más de 10 compras:
 int filtrarProveedoresMasDe10Compras(Proveedor proveedores[CANT_PROVEEDORES], Proveedor proveedoresFiltrados[CANT_PROVEEDORES]) {
     int j = 0;
-    for (int i = 0; i < CANT_PROVEEDORES; i++) {
+    int i;
+    for (i = 0; i < CANT_PROVEEDORES; i++) {
         if (proveedores[i].cantidadCompras > 10) {
-            proveedoresFiltrados[j++] = proveedores[i];
+            proveedoresFiltrados[j] = proveedores[i];
+            j++;
         }
     }
     return j;
@@ -189,7 +191,7 @@ void mostrarInfoProveedor(Proveedor proveedoresFiltrados[CANT_PROVEEDORES], int 
     printf("Ingrese el nombre del proveedor: \n");
     gets(nombreProveedor);
     getchar();
-
+    //USAR BUSQUEDA BINARIA
     while(indice < cantProveedoresFiltrados &&  !bandera){
         if(strcmp(proveedoresFiltrados[indice].nombre, nombreProveedor) == 0){
             bandera = 1;
@@ -222,7 +224,5 @@ int main()
     ordenarProveedoresAlfabeticamenteYMostrarlos(proveedoresFiltrados, cantProveedoresMas10Compras);
     mostrarInfoProveedor(proveedoresFiltrados, cantProveedoresMas10Compras);
 
-
-    printf("Hello world!\n");
     return 0;
 }
